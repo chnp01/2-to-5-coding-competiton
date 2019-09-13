@@ -1,0 +1,24 @@
+<!--cerner_2^5_2019-->
+<!--Web page that generates a random playing card-->
+<html>
+   <head>
+      <script>
+         var suits = ['S', 'H', 'D', 'C']
+         var numbers = [2,3,4,5,6,7,8,9,'J','Q','K','A']
+         function generateRandomPlayingCard()
+         {  
+         var randomSuit=  suits[Math.floor(Math.random()*suits.length)];
+         var randomNumber =      numbers[Math.floor(Math.random()*numbers.length)];
+         var imageSource = "https://deckofcardsapi.com/static/img/"+randomNumber+randomSuit+".png";
+         document.getElementById("generatedPlayingCard").src = imageSource;
+         }
+      </script>
+   </head>
+   <body align="center">
+      <h1  id="generateCard">Click the button to generate a random playing card.</h1>
+      <button onclick="generateRandomPlayingCard()">Generate</button><br/><br/>
+      <img id="generatedPlayingCard" src="https://deckofcardsapi.com/static/img/2D.png"/>
+   </body>
+</html>
+<html>
+   <body>
