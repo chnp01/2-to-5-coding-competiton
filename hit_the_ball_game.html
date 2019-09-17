@@ -1,0 +1,42 @@
+<!--  cerner_2^5_2019  -->
+<!--Hit the ball Game-->
+<html>
+   <head>
+      <style>
+         .initial{
+         position: absolute;
+         top:500px;
+         left:500px;
+         }
+      </style>
+      <script>
+         var animateBall, left=0, image=null, timer = 60 ,timerFn, score = 0;
+         function countScore()         {
+         document.getElementById('scoreValue').innerHTML = "Score : "+ (++score);
+         }
+         function startGame(){
+         setTimeout(stopGame,60000);
+         timerFn = setInterval(function(){document.getElementById("timeValue").innerHTML = "Time : "+ (timer--);},1000);
+         image = document.getElementById('ballImage');
+         moveRandom();   
+         }
+         function moveRandom(){
+            image.style.left = Math.floor(Math.random() * 900) + 'px';
+         	image.style.top =  Math.floor(Math.random() * 900) + 'px';
+            image.style.visibility='visible';
+            animateBall = setTimeout(function(){moveRandom();},700);    
+         }
+         function stopGame(){
+            clearTimeout(animateBall);
+            clearTimeout(timerFn);
+         }
+      </script>
+   </head>
+   <body align="center">
+      <h1 id="timeValue">Time : 60</h1>
+      <h1 id="scoreValue">Score : 0</h1>
+      <img src="ball.png" id="ballImage" class="initial" onclick="countScore()"/>
+      <button type="button" onclick="startGame()">Start Game</button>
+      <button type="button" onclick="stopGame()">Stop Game</button>
+   </body>
+</html>
